@@ -1,3 +1,9 @@
+.directory
+*.swp
+*.swo
+*~
+
+
 # History files
 .Rhistory
 .Rapp.history

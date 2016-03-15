@@ -20,8 +20,20 @@ You can build this dockerfile directly from github:
 docker build https://github.com/labgeo/pg-pgis-non-persistent.git
 ```
 
-Or pull the :
+Or pull it directly compiled from Docker Hub:
+
+```
+docker pull benizar/pg-pgis-non-persistent
+```
+
+Then, run the image using an appropiate tag:
 
 ```
 docker run -d -p 5433:5432 benizar/pg-pgis-non-persistent:9.5-2.1.8
 ```
+
+Finally, test if postgresql is running with psql:
+```
+psql -U labgeo -h localhost -p 5433 -d postgres
+```
+

@@ -17,11 +17,11 @@ Build and/or run the container
 You can build this dockerfile directly from github:
 
 ```
-docker build https://github.com/labgeo/pg-9.5-pgis-2.1.8-non-persistent.git
+docker build https://github.com/labgeo/pg-pgis-non-persistent.git
 ```
 
-Run the container with :
+Or pull the :
 
-```sh
-docker run -d -p 5433:5432 benizar/pg-9.5-pgis-2.1.8-non-persistent
+```
+docker run -d -p 5433:5432 benizar/pg-pgis-non-persistent:9.5-2.1.8
 ```

@@ -1,8 +1,6 @@
 pg-9.5-pgis-2.1.8-non-persistent
 =========================
 
-Presentation
-------------
 Build a non persistent docker image containing PostgreSQL 9.5 + PostGIS 2.1.8. This may be particularly useful when you need to commit a running docker with attached data.
 
 This Docker image is a container is based on Ubuntu 14.04 and features:

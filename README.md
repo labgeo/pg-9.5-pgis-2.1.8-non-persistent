@@ -29,7 +29,7 @@ docker pull benizar/pg-pgis-non-persistent
 Then, run the image using an appropiate tag:
 
 ```
-docker run -d -p 5433:5432 benizar/pg-pgis-non-persistent:9.5-2.1.8
+docker run -d -p 5433:5432 --name pgis-non-persistent_test benizar/pg-pgis-non-persistent:9.5-2.1.8
 ```
 
 Finally, test if postgresql is running with psql. Create a new geodatabase with a basic setup:

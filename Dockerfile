@@ -1,5 +1,5 @@
 FROM ubuntu
-MAINTAINER benizar@gmail.com
+MAINTAINER Benito Zaragozi <benizar@gmail.com>
 
 # Add the PostgreSQL PGP key to verify their Debian packages.
 # It should be the same key as https://www.postgresql.org/media/keys/ACCC4CF8.asc
@@ -12,14 +12,13 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" > /etc
 # Install ``python-software-properties``, ``software-properties-common`` and PostgreSQL 9.5
 #  There are some warnings (in red) that show up during the build. You can hide
 #  them by prefixing each apt-get statement with DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && apt-get install -y python-software-properties software-properties-common postgresql-9.5 postgresql-client-9.5 postgresql-contrib-9.5 
+RUN apt-get update && apt-get install -y python-software-properties software-properties-common postgresql-9.5 postgresql-client-9.5 postgresql-contrib-9.5 postgresql-server-dev-9.5
 
 
 #--------------
 ENV POSTGIS_VERSION 2.1.8
 
 RUN buildDeps=" \
-  postgresql-server-dev-9.5 \
   libgeos-dev \
   libproj-dev \ 
   libgdal-dev \

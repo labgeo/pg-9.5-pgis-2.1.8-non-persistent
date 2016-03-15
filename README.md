@@ -32,8 +32,19 @@ Then, run the image using an appropiate tag:
 docker run -d -p 5433:5432 benizar/pg-pgis-non-persistent:9.5-2.1.8
 ```
 
-Finally, test if postgresql is running with psql:
+Finally, test if postgresql is running with psql. Create a new geodatabase with a basic setup:
 ```
-psql -U labgeo -h localhost -p 5433 -d postgres
+PGPASSWORD=labgeo psql -h localhost -p 5433 -U labgeo -d postgres  -w <<EOSQL
+CREATE DATABASE siose2005;
+\c siose2005
+CREATE EXTENSION postgis;
+
+CREATE SCHEMA IF NOT EXISTS relational;
+CREATE SCHEMA IF NOT EXISTS jsonb;
+CREATE SCHEMA IF NOT EXISTS grids;
+CREATE SCHEMA IF NOT EXISTS reports;
+\q
+EOSQL
+
 ```
 

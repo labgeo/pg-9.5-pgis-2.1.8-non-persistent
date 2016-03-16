@@ -51,5 +51,4 @@ CREATE SCHEMA IF NOT EXISTS reports;
 \q
 EOSQL
 ```
-```
 

@@ -30,9 +30,9 @@ docker run -p 5433:5432  --name siose2005 -e POSTGRES_PASSWORD=postgres -d labge
 Finally, test if postgresql is running with psql. Create a new geodatabase with a basic setup:
 
 ```
-PGPASSWORD=labgeo psql -h localhost -p 5433 -U postgres -d postgres -w <<EOSQL
+PGPASSWORD=postgres psql -h localhost -p 5433 -U postgres -d postgres -w <<EOSQL
 CREATE DATABASE siose2005
-WITH OWNER "labgeo"
+WITH OWNER "postgres"
 ENCODING 'UTF8'
 TEMPLATE template0;
 

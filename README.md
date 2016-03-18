@@ -1,41 +1,36 @@
 pg-pgis-non-persistent
 =========================
 
-Build a non persistent docker image containing PostgreSQL 9.5 + PostGIS 2.1.8. This may be particularly useful when you need to commit a running docker with attached data.
+Build a non persistent docker image containing PostgreSQL + PostGIS latest versions. This may be particularly useful when you need to commit a running docker with attached data. Check tags and releases to see what versions are available.
 
-This Docker image is a container is based on Ubuntu 14.04 and features:
+This image is based on the pg-non-persistent dockerfile, and two other well-known dockerfiles. You can read documentation from these repositories to get a better understanding on how these images can be run:
 
-* PostgreSQL 9.5 (from PGDG packages)
-* PostGIS 2.1.8 and GEOS
+* https://github.com/labgeo/pg-non-persistent
+* https://github.com/docker-library/postgres
+* https://github.com/appropriate/docker-postgis
 
-It won't create any database, but you can use a labgeo superuser (password labgeo), with postgis. This Docker is aimed at tests and development. Do not use it for production purposes. It lacks security and is not micro-service oriented as should a Docker stack be. Use at your own risk.
+This Docker is aimed at tests and development, not for production purposes.
 
 
 Build and/or run the container
 ------------------------------
 
-You can build this dockerfile directly from github:
+You can build this dockerfile directly from github or pull it directly compiled from Docker Hub:
 
 ```
-docker build https://github.com/labgeo/pg-pgis-non-persistent.git
+docker build -t labgeo/pg-pgis-non-persistent:9.5-2.2  https://github.com/labgeo/pg-pgis-non-persistent.git#9.5-2.2
 ```
 
-Or pull it directly compiled from Docker Hub:
+Then, run the image:
 
 ```
-docker pull benizar/pg-pgis-non-persistent
-```
-
-Then, run the image using an appropiate tag:
-
-```
-docker run -d -p 5433:5432 --name pgis-non-persistent_test benizar/pg-pgis-non-persistent:9.5-2.1.8
+docker run -p 5433:5432  --name siose2005 -e POSTGRES_PASSWORD=postgres -d labgeo/pg-pgis-non-persistent:9.5-2.2
 ```
 
 Finally, test if postgresql is running with psql. Create a new geodatabase with a basic setup:
 
 ```
-PGPASSWORD=labgeo psql -h localhost -p 5436 -U labgeo -d postgres -w <<EOSQL
+PGPASSWORD=labgeo psql -h localhost -p 5433 -U postgres -d postgres -w <<EOSQL
 CREATE DATABASE siose2005
 WITH OWNER "labgeo"
 ENCODING 'UTF8'
